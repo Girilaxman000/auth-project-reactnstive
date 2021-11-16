@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, Button } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 import * as RootNavigation from "../../navigation/RootNavigation";
 import { LOGIN_ROUTE } from '../../navigation/routes'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
 import styles from './styles'
 
 function Registration() {

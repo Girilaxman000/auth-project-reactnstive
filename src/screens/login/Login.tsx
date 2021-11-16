@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { View, TextInput, Text, Button } from 'react-native'
-import styles from './styles'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 import * as RootNavigation from "../../navigation/RootNavigation";
 import { REGISTRATION_ROUTE, WELCOME_ROUTE } from '../../navigation/routes'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import styles from './styles'
 
 function Login() {
     const [email, setEmail] = useState<string>('')
@@ -14,7 +16,7 @@ function Login() {
     const [showPasswordError, setShowPasswordError] = useState<boolean>(false)
 
     const validateEmail = (val: string) => {
-        /* eslint-disable */
+        // eslint-disable-next-line no-use-before-define
         const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         /* eslint-enable */
         if (!regEmail.test(val)) {
