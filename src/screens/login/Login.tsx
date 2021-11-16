@@ -4,6 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import * as RootNavigation from "../../navigation/RootNavigation";
 import { REGISTRATION_ROUTE, WELCOME_ROUTE } from '../../navigation/routes'
+import ButtonComponent from '../../components/bottom';
 
 import styles from './styles'
 
@@ -16,9 +17,8 @@ function Login() {
     const [showPasswordError, setShowPasswordError] = useState<boolean>(false)
 
     const validateEmail = (val: string) => {
-        // eslint-disable-next-line no-use-before-define
+        // eslint-disable-next-line
         const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        /* eslint-enable */
         if (!regEmail.test(val)) {
             setErrorMessage('Invalid Email')
             setShowErrorMessage(true)
@@ -71,11 +71,10 @@ function Login() {
                 <TextInput style={showEmailError ? styles.errorinput : styles.input} placeholder="Email" value={email} onChangeText={handleEmailChange} />
                 <TextInput style={showPasswordError ? styles.errorinput : styles.input} placeholder="Password" secureTextEntry value={password} onChangeText={handlePasswordChange} />
             </View>
-            <TouchableOpacity style={styles.button}>
-                <Button onPress={signIn} title="Login" />
-            </TouchableOpacity>
+            <ButtonComponent callback={signIn} title="Login" />
+
             <View>
-                <Text>Don&apos;t have an account?</Text>
+                <Text style={{ marginTop: 30 }}>Don&apos;t have an account?</Text>
                 <TouchableOpacity onPress={() => RootNavigation.navigate(REGISTRATION_ROUTE)}>
                     <Text style={styles.link}>Register Here</Text>
                 </TouchableOpacity>

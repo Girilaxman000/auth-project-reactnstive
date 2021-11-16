@@ -32,5 +32,15 @@ const styles = StyleSheet.create({
   link: {
     color: 'blue',
   },
+  checkboxContainer: {
+    flexDirection: 'row',
+  },
+  checkbox: {
+    alignSelf: 'center',
+  },
+  label: {
+    margin: 8,
+    color: 'black',
+  },
 })
 export default styles

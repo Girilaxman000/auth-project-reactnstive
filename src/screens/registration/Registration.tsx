@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput, Button } from 'react-native'
+import { CheckBox } from "react-native-elements";
+
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import * as RootNavigation from "../../navigation/RootNavigation";
-import { LOGIN_ROUTE } from '../../navigation/routes'
+import { LOGIN_ROUTE, TERMS_ROUTE } from '../../navigation/routes'
+import ButtonComponent from '../../components/bottom';
 
 import styles from './styles'
 
@@ -19,11 +22,12 @@ function Registration() {
     const [showPasswordError, setShowPasswordError] = useState<boolean>(false)
     const [showContactError, setShowContactError] = useState<boolean>(false)
     const [showFullNameError, setShowFullNameError] = useState<boolean>(false)
+    const [checked, setChecked] = useState(false);
+    const [disabled, setDisabled] = useState<boolean>(true)
 
     const validateEmail = (val: string) => {
-        /* eslint-disable */
+        // eslint-disable-next-line
         const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        /* eslint-enable */
         if (!regEmail.test(val)) {
             setErrorMessage('Invalid Email')
             setShowErrorMessage(true)
@@ -39,7 +43,7 @@ function Registration() {
         setShowPasswordError(password.length <= 0)
         setShowContactError(contactNumber.length <= 0)
         setShowFullNameError(fullName.length <= 0)
-        if (fullName === '' || email === '' || password === '' || contactNumber === '') {
+        if (fullName === '' || email === '' || password === '' || contactNumber === '' || !checked) {
             setErrorMessage('Please fill required fields ')
             setShowErrorMessage(true)
         } else if (email !== '') {
@@ -52,13 +56,7 @@ function Registration() {
             setShowContactError(false)
             setShowFullNameError(false)
         }
-
-        if (!showErrorMessage && !showEmailError && !showPasswordError && !showContactError && !showFullNameError) {
-            RootNavigation.navigate(LOGIN_ROUTE)
-        }
-
     }
-
 
     const handleEmailChange = (text: string) => {
         setShowEmailError(text.length <= 0)
@@ -81,6 +79,15 @@ function Registration() {
         setFullName(text)
     }
 
+    const handleChange = () => {
+        setChecked(!checked)
+        if (!checked) {
+            setDisabled(false)
+        } else {
+            setDisabled(true)
+        }
+    }
+
     return (
         <View style={styles.container}>
             {
@@ -91,11 +98,17 @@ function Registration() {
                 <TextInput style={showEmailError ? styles.errorinput : styles.input} placeholder="Email" value={email} onChangeText={handleEmailChange} />
                 <TextInput style={showPasswordError ? styles.errorinput : styles.input} placeholder="Password" secureTextEntry value={password} onChangeText={handlePasswordChange} />
                 <TextInput style={showContactError ? styles.errorinput : styles.input} placeholder="Contact Number" value={contactNumber} onChangeText={handleContactChange} />
+                <View style={styles.checkboxContainer}>
+                    <CheckBox
+                        checked={checked}
+                        onPress={handleChange}
+                    />
+                    <TouchableOpacity onPress={() => RootNavigation.navigate(TERMS_ROUTE)}>
+                        <Text style={styles.label}>I Accept  <Text style={{ color: "blue" }}>Terms And Conditions</Text></Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <TouchableOpacity style={styles.button}>
-                <Button onPress={signUp} title="Register" />
-            </TouchableOpacity>
-
+            <ButtonComponent callback={signUp} disabled={disabled} title="Register" />
             <Text> Already have an account?</Text>
             <TouchableOpacity onPress={() => RootNavigation.navigate(LOGIN_ROUTE)}>
                 <Text style={styles.link}>Login</Text>

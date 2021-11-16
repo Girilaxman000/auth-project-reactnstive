@@ -4,9 +4,8 @@ import { NavigationContainerRef } from '@react-navigation/native';
 export const navigationRef = React.createRef<NavigationContainerRef>();
 export const drawerNavigationRef = React.createRef()
 
-/* eslint-disable */
+// eslint-disable-next-line
 export function navigate(name: string, params?: any) {
-    /* eslint-enable */
     navigationRef.current?.navigate(name, params);
 }
 
