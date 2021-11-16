@@ -19,7 +19,7 @@ type MainStackParams = {
 
 const Stack = createStackNavigator<MainStackParams>();
 
-const AppNavigator = ({ initialRoute }: { initialRoute: string }) => {
+const AppNavigator = () => {
     return (
         <>
             <Stack.Navigator initialRouteName={LOGIN_ROUTE} >

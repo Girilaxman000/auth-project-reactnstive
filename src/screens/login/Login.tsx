@@ -6,15 +6,17 @@ import { REGISTRATION_ROUTE, WELCOME_ROUTE } from '../../navigation/routes'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Login() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [showErrorMessage, setShowErrorMessage] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
-    const [showEmailError, setShowEmailError] = useState(false)
-    const [showPasswordError, setShowPasswordError] = useState(false)
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>('')
+    const [showEmailError, setShowEmailError] = useState<boolean>(false)
+    const [showPasswordError, setShowPasswordError] = useState<boolean>(false)
 
-    const validateEmail = (val: any) => {
-        let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const validateEmail = (val: string) => {
+        /* eslint-disable */
+        const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        /* eslint-enable */
         if (!regEmail.test(val)) {
             setErrorMessage('Invalid Email')
             setShowErrorMessage(true)
@@ -70,10 +72,12 @@ function Login() {
             <TouchableOpacity style={styles.button}>
                 <Button onPress={signIn} title="Login" />
             </TouchableOpacity>
-            <Text>Don't have an account?</Text>
-            <TouchableOpacity onPress={() => RootNavigation.navigate(REGISTRATION_ROUTE)}>
-                <Text style={styles.link}>Register Here</Text>
-            </TouchableOpacity>
+            <View>
+                <Text>Don&apos;t have an account?</Text>
+                <TouchableOpacity onPress={() => RootNavigation.navigate(REGISTRATION_ROUTE)}>
+                    <Text style={styles.link}>Register Here</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }

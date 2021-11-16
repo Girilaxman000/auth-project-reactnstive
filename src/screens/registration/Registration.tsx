@@ -7,19 +7,21 @@ import styles from './styles'
 
 function Registration() {
 
-    const [fullName, setFullName] = useState('')
-    const [email, setEmail] = useState('')
-    const [contactNumber, setContactNumber] = useState('')
-    const [password, setPassword] = useState('')
-    const [showErrorMessage, setShowErrorMessage] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
-    const [showEmailError, setShowEmailError] = useState(false)
-    const [showPasswordError, setShowPasswordError] = useState(false)
-    const [showContactError, setShowContactError] = useState(false)
-    const [showFullNameError, setShowFullNameError] = useState(false)
+    const [fullName, setFullName] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
+    const [contactNumber, setContactNumber] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>('')
+    const [showEmailError, setShowEmailError] = useState<boolean>(false)
+    const [showPasswordError, setShowPasswordError] = useState<boolean>(false)
+    const [showContactError, setShowContactError] = useState<boolean>(false)
+    const [showFullNameError, setShowFullNameError] = useState<boolean>(false)
 
-    const validateEmail = (val: any) => {
-        let regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const validateEmail = (val: string) => {
+        /* eslint-disable */
+        const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        /* eslint-enable */
         if (!regEmail.test(val)) {
             setErrorMessage('Invalid Email')
             setShowErrorMessage(true)
