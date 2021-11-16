@@ -33,10 +33,10 @@ function Registration() {
     }
 
     const signUp = () => {
-        setShowEmailError(email.length <= 0 ? true : false)
-        setShowPasswordError(password.length <= 0 ? true : false)
-        setShowContactError(contactNumber.length <= 0 ? true : false)
-        setShowFullNameError(fullName.length <= 0 ? true : false)
+        setShowEmailError(email.length <= 0)
+        setShowPasswordError(password.length <= 0)
+        setShowContactError(contactNumber.length <= 0)
+        setShowFullNameError(fullName.length <= 0)
         if (fullName === '' || email === '' || password === '' || contactNumber === '') {
             setErrorMessage('Please fill required fields ')
             setShowErrorMessage(true)
@@ -59,23 +59,23 @@ function Registration() {
 
 
     const handleEmailChange = (text: string) => {
-        setShowEmailError(text.length <= 0 ? true : false)
+        setShowEmailError(text.length <= 0)
         setEmail(text)
         setShowErrorMessage(false)
     }
 
     const handlePasswordChange = (text: string) => {
-        setShowPasswordError(text.length <= 0 ? true : false)
+        setShowPasswordError(text.length <= 0)
         setPassword(text)
     }
 
     const handleContactChange = (text: string) => {
-        setShowContactError(text.length <= 0 ? true : false)
+        setShowContactError(text.length <= 0)
         setContactNumber(text)
     }
 
     const handleFullNameChange = (text: string) => {
-        setShowFullNameError(text.length <= 0 ? true : false)
+        setShowFullNameError(text.length <= 0)
         setFullName(text)
     }
 

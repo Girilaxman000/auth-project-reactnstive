@@ -29,8 +29,8 @@ function Login() {
 
     const signIn = () => {
 
-        setShowEmailError(email.length <= 0 ? true : false)
-        setShowPasswordError(password.length <= 0 ? true : false)
+        setShowEmailError(email.length <= 0)
+        setShowPasswordError(password.length <= 0)
         if (email.length <= 0 || password.length <= 0) {
             setErrorMessage('Please fill required fields')
             setShowErrorMessage(true)
@@ -51,12 +51,12 @@ function Login() {
     }
 
     const handleEmailChange = (text: string) => {
-        setShowEmailError(text.length <= 0 ? true : false)
+        setShowEmailError(text.length <= 0)
         setEmail(text)
     }
 
     const handlePasswordChange = (text: string) => {
-        setShowPasswordError(text.length <= 0 ? true : false)
+        setShowPasswordError(text.length <= 0)
         setPassword(text)
     }
 
