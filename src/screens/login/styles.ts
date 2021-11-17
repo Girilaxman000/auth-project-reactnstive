@@ -31,6 +31,11 @@ const styles = StyleSheet.create({
   },
   link: {
     color: 'blue',
+    marginLeft: 20,
+  },
+  password: {
+    color: 'red',
+    marginTop: 40,
   },
 })
 

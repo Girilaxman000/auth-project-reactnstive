@@ -5,18 +5,24 @@ import Registration from '../screens/registration';
 import Login from '../screens/login';
 import Welcome from '../screens/welcome/Welcome';
 import TermsConditions from '../screens/terms-conditions';
+import ChangePassword from '../screens/change-password';
+import ForgotPassword from '../screens/forget-password';
 
 import {
     REGISTRATION_ROUTE,
     LOGIN_ROUTE,
     WELCOME_ROUTE,
-    TERMS_ROUTE
+    TERMS_ROUTE,
+    CHANGEPASSWORD_ROUTE,
+    FORGOTPASSWORD_ROUTE
 } from './routes';
 
 type MainStackParams = {
     Registration: undefined,
     Login: undefined,
     Welcome: undefined,
+    ForgotPassword: undefined,
+    ChangePassword: undefined,
     TermsConditions: undefined
 }
 
@@ -37,6 +43,8 @@ const AppNavigator = () => {
                 }} />
                 <Stack.Screen name={WELCOME_ROUTE} component={Welcome} />
                 <Stack.Screen name={TERMS_ROUTE} component={TermsConditions} />
+                <Stack.Screen name={CHANGEPASSWORD_ROUTE} component={ChangePassword} />
+                <Stack.Screen name={FORGOTPASSWORD_ROUTE} component={ForgotPassword} />
             </Stack.Navigator >
         </>
     );

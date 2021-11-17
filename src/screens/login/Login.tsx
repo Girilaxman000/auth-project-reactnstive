@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { View, TextInput, Text, Button } from 'react-native'
+import { View, TextInput, Text } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import * as RootNavigation from "../../navigation/RootNavigation";
-import { REGISTRATION_ROUTE, WELCOME_ROUTE } from '../../navigation/routes'
+import { REGISTRATION_ROUTE, WELCOME_ROUTE, FORGOTPASSWORD_ROUTE } from '../../navigation/routes'
 import ButtonComponent from '../../components/bottom';
 
 import styles from './styles'
@@ -46,7 +46,7 @@ function Login() {
             setShowPasswordError(false)
         }
 
-        if (!showErrorMessage && !showEmailError && !showPasswordError) {
+        if (!showErrorMessage && !showEmailError && !showPasswordError && email !== '' && password !== '') {
             RootNavigation.navigate(WELCOME_ROUTE)
         }
 
@@ -77,6 +77,11 @@ function Login() {
                 <Text style={{ marginTop: 30 }}>Don&apos;t have an account?</Text>
                 <TouchableOpacity onPress={() => RootNavigation.navigate(REGISTRATION_ROUTE)}>
                     <Text style={styles.link}>Register Here</Text>
+                </TouchableOpacity>
+            </View>
+            <View>
+                <TouchableOpacity onPress={() => RootNavigation.navigate(FORGOTPASSWORD_ROUTE)}>
+                    <Text style={styles.password}>Forgot Password ?</Text>
                 </TouchableOpacity>
             </View>
         </View>
