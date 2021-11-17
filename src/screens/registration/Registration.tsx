@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput } from 'react-native'
 import { CheckBox } from "react-native-elements";
-
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import * as RootNavigation from "../../navigation/RootNavigation";
