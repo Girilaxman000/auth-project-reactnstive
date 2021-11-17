@@ -7,6 +7,7 @@ import Welcome from '../screens/welcome/Welcome';
 import TermsConditions from '../screens/terms-conditions';
 import ChangePassword from '../screens/change-password';
 import ForgotPassword from '../screens/forget-password';
+import UpdatePassword from '../screens/update-password';
 
 import {
     REGISTRATION_ROUTE,
@@ -14,7 +15,8 @@ import {
     WELCOME_ROUTE,
     TERMS_ROUTE,
     CHANGEPASSWORD_ROUTE,
-    FORGOTPASSWORD_ROUTE
+    FORGOTPASSWORD_ROUTE,
+    UPDATEPASSWORD_ROUTE
 } from './routes';
 
 type MainStackParams = {
@@ -23,7 +25,8 @@ type MainStackParams = {
     Welcome: undefined,
     ForgotPassword: undefined,
     ChangePassword: undefined,
-    TermsConditions: undefined
+    TermsConditions: undefined,
+    UpdatePassword: undefined
 }
 
 const Stack = createStackNavigator<MainStackParams>();
@@ -42,9 +45,10 @@ const AppNavigator = () => {
                     headerShown: false
                 }} />
                 <Stack.Screen name={WELCOME_ROUTE} component={Welcome} />
-                <Stack.Screen name={TERMS_ROUTE} component={TermsConditions} />
-                <Stack.Screen name={CHANGEPASSWORD_ROUTE} component={ChangePassword} />
-                <Stack.Screen name={FORGOTPASSWORD_ROUTE} component={ForgotPassword} />
+                <Stack.Screen name={TERMS_ROUTE} component={TermsConditions} options={{ title: 'Terms Conditions' }} />
+                <Stack.Screen name={CHANGEPASSWORD_ROUTE} component={ChangePassword} options={{ title: 'Change Password' }} />
+                <Stack.Screen name={FORGOTPASSWORD_ROUTE} component={ForgotPassword} options={{ title: 'Forgot Password' }} />
+                <Stack.Screen name={UPDATEPASSWORD_ROUTE} component={UpdatePassword} options={{ title: 'Update Password' }} />
             </Stack.Navigator >
         </>
     );

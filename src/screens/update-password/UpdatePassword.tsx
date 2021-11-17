@@ -5,14 +5,9 @@ import ButtonComponent from '../../components/bottom'
 
 import styles from './styles'
 
-const ChangePassword = () => {
-    const [oldPassword, setOldPassword] = useState<string>('')
+const UpdatePassword = () => {
     const [newPassword, setNewPassword] = useState<string>('')
     const [confirmPassword, setConfirmPassword] = useState<string>('')
-
-    const handleOldPasswordChange = (text: string) => {
-        setOldPassword(text)
-    }
 
     const handleNewPasswordChange = (text: string) => {
         setNewPassword(text)
@@ -28,7 +23,6 @@ const ChangePassword = () => {
 
     return (
         <View style={styles.container}>
-            <TextInput style={styles.input} placeholder="Old Password" value={oldPassword} onChangeText={handleOldPasswordChange} />
             <TextInput style={styles.input} placeholder="New Password" secureTextEntry value={newPassword} onChangeText={handleNewPasswordChange} />
             <TextInput style={styles.input} placeholder="Confirm Password" secureTextEntry value={confirmPassword} onChangeText={handleConfirmPasswordChange} />
             <ButtonComponent callback={changePassword} title="Update" />
@@ -36,4 +30,4 @@ const ChangePassword = () => {
     )
 }
 
-export default ChangePassword
+export default UpdatePassword
